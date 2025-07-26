@@ -1,6 +1,7 @@
 import { sendMessage, scheduledMessage } from "./services/sendMessage.js";
 import { getMessage } from "./services/getMessages.js";
 import { updateMessage } from "./services/updateMessage.js";
+import { deleteMessage } from "./services/deleteMessage.js";
 
 // send message
 const res = await sendMessage(' Hello Akram!');
@@ -30,16 +31,21 @@ const fetchMessages = async () => {
 fetchMessages();
 
 // Edit message
-const ts = "1753527442.537269";
+const ts1 = "1753527442.537269";
 const newText = "hello sir me can i help you";
 
-const result = await updateMessage(ts, newText);
+const result = await updateMessage(ts1, newText);
 
 if (result.updated) {
   console.log(" Message updated:", result.newText);
 } else {
   console.log(" Failed to update:", result.error);
 }
+
+// Delete message
+const ts = "1753527442.537269"
+const deleted = await deleteMessage(ts);
+console.log(deleted);
 
 
 
